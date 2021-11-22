@@ -7,15 +7,22 @@ import java.util.*;
 @Entity
 public class Skill extends AbstractEntity {
 
-    @NotNull
-    @Size(max=500)
-    public String description;
-
     @ManyToMany(mappedBy = "skills")
     private List<Job> jobs = new ArrayList<>();
 
-    //Setters and Getters
+    @NotBlank
+    @Size(max=500)
+    private String description;
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    //Setters and Getters
     public List<Job> getJobs() {
         return jobs;
     }
@@ -23,7 +30,6 @@ public class Skill extends AbstractEntity {
     public void setJobs(List<Job> jobs) {
         this.jobs = jobs;
     }
-
     //No arg Constructor
     public Skill(){}
 }
